@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
       <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Comfortaa:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>      
-      <body className='bg-gradient-to-b from-d-blue to-d-purple bg-no-repeat w-screen h-screen flex justify-center items-center'>
+      <body className='bg-gradient-to-b from-d-gta to-d-gta2 bg-no-repeat w-screen h-screen flex justify-center items-center'>
         {children}
       </body>
     </html>

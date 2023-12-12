@@ -6,7 +6,7 @@ import Image from 'next/image'
 import KeyIcon from '@mui/icons-material/Key';
 import PersonIcon from '@mui/icons-material/Person';
 
-const SignIn = () => {
+const Login = () => {
   return (
     <div className='h-[70vh] w-[60vw] bg-white flex overflow-hidden'>
         
@@ -41,11 +41,11 @@ const SignIn = () => {
                     Giriş Yap
                 </button>
             </form>
-            <a href="/signUp" className='py-6 font-comfortaa'><h2>Hesabınız yoksa <span className='text-red-500 border-b-2 border-red-300'>kayıt olmak</span> için tıklayın</h2></a>
+            <a href="/register" className='py-6 font-comfortaa'><h2>Hesabınız yoksa <span className='text-red-500 border-b-2 border-red-300'>kayıt olmak</span> için tıklayın</h2></a>
         </div>
 
     </div>
   )
 }
 
-export default SignIn
+export default Login

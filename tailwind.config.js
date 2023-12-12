@@ -20,9 +20,18 @@ module.exports = {
       colors: {
         "d-blue" : "#008B8B",
         "d-blue2": "#6ED7C9",
+        "d-gta" : "#9376A2",    
+        "d-gta2" : "#F8A18E",
         "d-purple" : "#FF8080",
         "d-green" : "#50817B",
+        "d-green2" : "#09805D",
         "d-yellow": "#B6C79D",
+        "d-gray" : "#202C33",
+        "d-white" : "#C2CAD2",
+        "d-black" : "#121B23",
+        "d-gray2" : "#19222A",
+        "d-gray3" : "#182127",
+        "bg-white" : "#FDFDFD"
       }
     },
   },

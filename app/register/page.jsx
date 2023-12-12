@@ -10,7 +10,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import KeyIcon from '@mui/icons-material/Key';
 import PersonIcon from '@mui/icons-material/Person';
 
-const signUp = () => {
+const Register = () => {
   return (
     <div className='h-[70vh] w-[60vw] bg-white flex overflow-hidden justify-between'>
         
@@ -65,11 +65,11 @@ const signUp = () => {
                     Kayıt ol
                 </button>
             </form>
-            <a href="/signIn" className='py-6 font-comfortaa'><h2>Hesabınız varsa <span className='text-red-500 border-b-2 border-red-300'>giriş yapmak</span> için tıklayın</h2></a>
+            <a href="/login" className='py-6 font-comfortaa'><h2>Hesabınız varsa <span className='text-red-500 border-b-2 border-red-300'>giriş yapmak</span> için tıklayın</h2></a>
         </div>
 
     </div>
   )
 }
 
-export default signUp
+export default Register
