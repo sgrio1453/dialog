@@ -36,7 +36,7 @@ const Chat = () => {
           </div>
           <div className="w-12 h-12">
             <Image
-            className="w-full h-full rounded-full"
+            className="w-full h-full rounded-full object-cover"
             src="/images/me.jpg"
             alt="profil"
             height={48}
@@ -50,7 +50,7 @@ const Chat = () => {
         {/* navbar */}
         <div className="flex flex-col space-y-9">
           <Link href="/chat"><Messages3 size="40" color="#3E0AD4" variant="Bold"/></Link>
-          {/* <Link href="/#"><Call size="40" color="#ABABAB"/></Link> */}
+          <Link href="/#"><Call size="40" color="#ABABAB"/></Link>
           <Link href="/#"><Setting size="40" color="#ABABAB"/></Link>
         </div>
        </div>
@@ -93,11 +93,12 @@ const Chat = () => {
         </div>
         <hr className="border-[#D8D8D8]"/>
         {/* message */}
-        <div className="w-full h-full flex flex-col justify-end space-y-4 p-4 overflow-y-scroll">
-        <div className="flex justify-end">
+        <div className="w-full h-screen flex flex-col justify-end  overflow-y-auto">
+        <div className="w-full h-[2000px] overflow-y-auto space-y-4 p-4">
+        <div className="flex justify-end ">
             <div className="flex justify-between max-w-[60%] text-ellipsis bg-[#3E0AD4] rounded-lg px-2 py-2 space-x-3">
-                <h2 className="text-[#FDFDFD] p-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat commodi vel praesentium nam pariatur inventore cumque nemo officia consequuntur exercitationem?</h2>
-                <h4 className="text-xs text-[#FDFDFD] flex items-end">14:53</h4>
+                <h2 className="text-[#FDFDFD] p-1">Lorem ipsum dolor, sit met consectetur adipisicing elit. Quaerat commodi vel praesentium nam pariatur inventore cumque nemo officia consequuntur exercitationem?</h2>
+                <h4 className="text-xs text-[#FDFDFD] flex items-end">14:13</h4>
             </div>
             </div>
             <div className="flex justify-start">
@@ -124,20 +125,20 @@ const Chat = () => {
                 <h4 className="text-xs text-[#FDFDFD] flex items-end">14:53</h4>
             </div>
             </div>
-            <div className="flex justify-end">  
+            <div className="flex justify-end ">  
             <div className="flex justify-between max-w-[60%] text-ellipsis bg-[#3E0AD4] rounded-lg px-2 py-2 space-x-3">
                 <h2 className="text-[#FDFDFD] p-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum pariatur magnam natus sunt odit provident tenetur. Alias architecto est, nesciunt officia dicta mollitia ratione dolorem placeat, pariatur at perspiciatis commodi necessitatibus minima distinctio, obcaecati autem doloribus! Reiciendis sequi blanditiis cupiditate suscipit deleniti!</h2>
                 <h4 className="text-xs text-[#FDFDFD] flex items-end">14:53</h4>
             </div>
             </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end ">
             <div className="flex justify-between max-w-[60%] text-ellipsis bg-[#3E0AD4] rounded-lg px-2 py-2 space-x-3">
                 <h2 className="text-[#FDFDFD] p-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat commodi vel praesentium nam pariatur inventore cumque nemo officia consequuntur exercitationem?</h2>
                 <h4 className="text-xs text-[#FDFDFD] flex items-end">14:53</h4>
             </div>
             </div>
             <div className="flex justify-start">
-            <div className="flex justify-between max-w-[60%] text-ellipsis bg-[#414142] rounded-lg px-2 py-2 space-x-3">
+            <div className="flex justify-between max-w-[60%] text-ellipsis bg-[#414142] rounded-lg px-2 py-2 space-x-3 ">
                 <h2 className="text-[#FDFDFD] p-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, totam esse maxime vel fuga repudiandae!</h2>
                 <h4 className="text-xs text-[#FDFDFD] flex items-end">14:53</h4>
             </div>
@@ -149,11 +150,12 @@ const Chat = () => {
             </div>
             </div>
         </div>
+        </div>
         {/* input */}
-        <div className="flex justify-between items-center space-x-5 ">
+        <div className="flex justify-between items-center space-x-5  text-ellipsis">
           <form className="flex items-center space-x-5 border border-[#ABABAB] p-4 w-full rounded-xl">
             <EmojiHappy size="24" color="#3E0AD4"/>
-            <input type="text" placeholder="Mesaj yazın..." className="outline-none"/>
+            <input type="text" placeholder="Mesaj yazın..." className="outline-none w-full"/>
           </form>
           <div>
           <Send2 size="32" color="#3E0AD4"/>
@@ -167,7 +169,7 @@ const Chat = () => {
         <div className="w-40 h-40 ">
                 <Image
                   className="rounded-full object-cover w-full h-full border border-[#3E0AD4]"
-                  src="/images/p1.jpg"
+                  src="/images/me.jpg"
                   alt="profilPhoto"
                   width={160}
                   height={160}
