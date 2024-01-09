@@ -1,23 +1,22 @@
 "use client"
-import Image from 'next/image'
-import Link from 'next/link'
+import React, { useState } from 'react'
+import { useAuth } from 'next-auth/react';
+
 import { getUserHandler } from '@/data/actions/UserActions'
-import { useState } from 'react';
-import { data } from 'autoprefixer';
 
-export default function Home() {
 
-  //MAKE USE STATE FOR USERS
-  const [users, setUsers] = useState([]);
+const Profile = () => {
 
-  const getUsers = async () =>{
-    await getUserHandler().then((data) => {
-      setUsers(data)
-    })
-    
-  }
+  const [user, setUser] = useState();
 
-getUsers();
+  const getUser = async () => {
+    const userID = useAuth().user.userid; 
+    const userRows = await getUserHandler(userID);
+    const user = userRows[0]; 
+    setUser(user);
+  };
+  getUser();
+  console.log(user);
 
   return (
     <div className='w-full m-20'>
@@ -25,19 +24,17 @@ getUsers();
         <div className='flex flex-col'>
          
         {
-          users ?    <>
+          user ?    <>
           
-            {users.map((i, index) => (
               <div key={index} className='flex flex-col space-y-4'>
                 <h1 className='font-bold font-comfortaa text-black text-4xl tracking-widest'>
-                  {i.username}
+                  {user.username}
                 </h1>
                 <h1 className='font-bold font-comfortaa text-black text-4xl tracking-widest'>
-                  {i.email}
+                  {user.email}
                 </h1>
               </div>
-              
-            ))}
+            
           </>: <h1>user not found</h1>
 }   
         </div>  
@@ -45,3 +42,4 @@ getUsers();
     </div>
   )
 }
+export default Profile

@@ -18,8 +18,8 @@ import PersonIcon from '@mui/icons-material/Person';
 
 const Register = () => {
 
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
   const [username, setUsername] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -30,8 +30,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { firstName, lastName, username, phone, email, pword };
-    const res = await registerHandler(user).then(() => router.push("/")).catch((error) => console.log(error));
+    const user = { firstname, lastname, username, phone, email, pword };
+    const res = await registerHandler(user).then(() => router.push("/login")).catch((error) => console.log(error));
     
   };
   
@@ -64,11 +64,11 @@ const Register = () => {
             <form action="" onSubmit={handleSubmit} className='w-full flex flex-col items-center space-y-6 mt-10 font-redHatDisplay'>
                 <div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
                     <span className='text-[#3E0AD4] '><AccountCircleIcon/></span>
-                    <input onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="Adınızı giriniz" className='outline-none w-full' required/>
+                    <input onChange={(e) => setFirstname(e.target.value)} type="text" placeholder="Adınızı giriniz" className='outline-none w-full' required/>
                 </div>
                 <div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
                     <span className='text-[#3E0AD4]'><AccountCircleIcon/></span>
-                    <input onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Soyadınızı giriniz" className='outline-none w-full' required/>
+                    <input onChange={(e) => setLastname(e.target.value)} type="text" placeholder="Soyadınızı giriniz" className='outline-none w-full' required/>
                 </div>
                 <div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
                     <span className='text-[#3E0AD4]'><PersonIcon/></span>

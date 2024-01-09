@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Settings = () => {
   return (
@@ -6,7 +7,7 @@ const Settings = () => {
       {/* navbar */}
       <div>
         <div>
-            <CloseIcon/>
+            
         </div>
         <h3>
             Profil
