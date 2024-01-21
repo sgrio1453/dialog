@@ -24,18 +24,7 @@ export async function getUserHandler() {
   return rows;
 }
 
-// message function
-export async function messageHandler({ userid, message }) {
-  const client = await db.connect();
 
-  const { rows } = await client.sql`
-    INSERT INTO message (userid, message)
-    VALUES (${userid}, ${message})
-    RETURNING *
-  `;
-
-  return rows;
-}
 
 
 
