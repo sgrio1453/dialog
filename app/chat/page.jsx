@@ -12,8 +12,10 @@ import UserSenderInfo from '@/components/UserSenderInfo/UserSenderInfo';
 import UserProfile from '@/components/UserProfile/UserProfile';
 import Settings from '@/components/Settings/Settings';
 import Call from '@/components/Call/Call';
+import io from "socket.io-client"
 
-
+const socket = io.connect('http://localhost:5000');
+// const socket = ""
 const Chat = () => {
   const [selectedComponent, setSelectedComponent] = useState('MessageBar');
   const router = useRouter();
@@ -55,9 +57,9 @@ const Chat = () => {
         <MessageSender />
         <hr className="border-[#D8D8D8]" />
         {/* message */}
-        <Message />
+        <Message socket={socket} />
         {/* input */}
-        <MessageInput />
+        <MessageInput socket={socket} />
       </div>
       {/* forth section */}
       <UserSenderInfo />

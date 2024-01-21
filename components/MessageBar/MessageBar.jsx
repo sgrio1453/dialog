@@ -7,7 +7,7 @@ import { addChat, removeChat } from "@/app/redux/chat/chatSlice";
 
 import { SearchNormal, ArrowRight2 } from "iconsax-react";
 
-const MessageBar = () => {
+const  MessageBar = () => {
   // const dispatch = useDispatch();
   // const [ messages, setMessages] = useState([]);
 

@@ -8,7 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Messages3, Call, Setting, LogoutCurve } from 'iconsax-react';
 
-
 const Navbar = ({ setSelectedComponent }) => {
   const dispatch = useDispatch();
   const router = useRouter();

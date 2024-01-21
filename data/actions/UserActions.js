@@ -6,6 +6,14 @@ import { db } from "@vercel/postgres";
 const cryptoJs = require("crypto-js");
 
 
+// get user by token
+export async function getUserByTokenHandler({ token }) {
+  const client = await db.connect();
+  // ${userid}
+  const { rows } = await client.sql`SELECT * FROM users where pword = ${token}`;
+
+}
+
 
 export async function getUserHandler() {
   const client = await db.connect();
@@ -87,4 +95,17 @@ export async function loginHandler({ username, pword }) {
   } else {  
     return 0; 
   }
+}
+
+ // message handler
+export async function messageHandler({ messageid, receiverid, senderid, message, createddate, deletedate, type, messagestatus }) {
+  const client = await db.connect();
+
+  const { rows } = await client.sql`
+    INSERT INTO message (messageid, receiverid, senderid, message, createddate)
+    VALUES (${messageid}, ${receiverid}, ${senderid}, ${message}, ${createddate})
+    RETURNING *
+  `;
+
+  return rows;
 }
