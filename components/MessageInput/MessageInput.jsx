@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EmojiHappy, Send2 } from 'iconsax-react';
 import Picker from 'emoji-picker-react';
 import io from 'socket.io-client';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setReduxMessage } from '@/app/redux/message/messageSlice';
 import { messageHandler } from '@/data/actions/UserActions';
 const MessageInput = ({ socket }) => {
@@ -11,32 +11,42 @@ const MessageInput = ({ socket }) => {
   const [message, setMessage] = useState('');
   const [showEmoji, setShowEmoji] = useState(false);
   const username = useSelector((state) => state.user.username);
-
-  console.log("username ",username);
+  const dispatch = useDispatch();
+  // console.log("username kısmı",username);
 
   const [connectionError, setConnectionError] = useState(null);
 
+  const date = (new Date(Date.now)).getHours() + ":" + (new Date(Date.now)).getMinutes()
 
 
       socket.emit('set_username', { username });
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-      socket.on("get_messages",(deneme)=>{
-        console.log(deneme);
-      })
+  //     // socket.on("get_messages",(deneme)=>{
+  //     //   console.log(deneme);
+  //     // })
 
+  //     socket.on('messageReturn', (data) => {
+  //       console.log(data);
+        
+  //       dispatch(setReduxMessage(data.message));
+  //     });
 
     
-  }, [socket]);
+  // }, [socket]);
 
 
   const sendMessage = async (e) => {
     e.preventDefault();
- 
-    await socket.emit('message', { message,username });
+    if (message.trim() === '') {
+      return; // Boş mesaj gönderme
+    }
+    
+    await socket.emit('message', { message, username });
+    dispatch(setReduxMessage(message)); 
     setMessage('');
 
   };

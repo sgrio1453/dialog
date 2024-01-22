@@ -1,15 +1,12 @@
-"use client"
-import './globals.css'
-import { useEffect } from 'react';
+"use client";
+import "./globals.css";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
-import { store, persistor} from './redux/store';
-import useCookie from '@/hooks/useCookies';
-import { getUserByTokenHandler } from '@/data/actions/UserActions'; 
-import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from "./redux/store";
+import useCookie from "@/hooks/useCookies";
+import { getUserByTokenHandler } from "@/data/actions/UserActions";
+import { PersistGate } from "redux-persist/integration/react";
 // import { store, persistor } from '../src/redux/store';
-
-
-
 
 // export const metadata = {
 //   title: 'Dialog',
@@ -25,37 +22,36 @@ import { PersistGate } from 'redux-persist/integration/react';
 //   },
 // }
 
-
 export default function RootLayout({ children }) {
+  //   const [value, update, remove] = useCookie("token", "")
 
-  const [value, update, remove] = useCookie("token", "")
+  //   const getUser =  async() => {
+  //     const user = await getUserByTokenHandler({token: value})
+  //     console.log(user)
+  //   }
 
-  const getUser =  async() => {
-    const user = await getUserByTokenHandler({token: value})
-    console.log(user)
-  }
-  
-useEffect(() => {
+  // useEffect(() => {
 
-  getUser();
+  //   getUser();
 
-  
-},);
-
+  // },);
 
   return (
     <html lang="en">
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-      <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Comfortaa:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>      
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Comfortaa:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
 
-        <body className='w-screen h-screen flex justify-center items-center'>
-      <Provider store={store} >
-      <PersistGate loading={null} persistor={persistor}>
-          {children}
-        </PersistGate>
-      </Provider>
-        </body>
+      <body className="w-screen h-screen flex justify-center items-center">
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            {children}
+          </PersistGate>
+        </Provider>
+      </body>
     </html>
-  )
+  );
 }
