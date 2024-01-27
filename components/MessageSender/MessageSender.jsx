@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { useSelector } from 'react-redux';
 
 //icons
 import { SearchNormal, More } from 'iconsax-react';
@@ -7,6 +8,9 @@ import { SearchNormal, More } from 'iconsax-react';
 
 
 const MessageSender = () => {
+
+  const activeUser = useSelector((state) => state.chat.user);
+  console.log("aktif user bilgileri burası",activeUser);
   return (
     
     <div className="flex justify-between items-center">
@@ -22,7 +26,7 @@ const MessageSender = () => {
           />
     </div>
     <div className="flex items-center space-x-2">
-      <div className="font-bold">Profile 1</div>
+      <div className="font-bold">{activeUser.firstname} {activeUser.lastname}</div>
       <div className="text-green-500 text-4xl">•</div>
     </div>
     <div className="flex space-x-4">

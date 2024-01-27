@@ -4,8 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const messageSlice = createSlice({
     name: "message",
     initialState: {
-        message : '', 
+        message : '',
+        time: '',
         messages: [],
+        receiverId: '',
+        senderId: ''
     },
     reducers: {
         setReduxMessage(state, action) {
@@ -16,9 +19,18 @@ const messageSlice = createSlice({
         },
         clearMessages: (state, action) => {
             state.messages = []
-        }
+        },
+        timeMessage : (state, action) => {
+            state.time= action.payload
+        },
+        receiverId : (state,action) => {
+            state.receiverId = action.payload
+        },
+        senderId : (state ,action ) => {
+            state.senderId = action.payload
+        },
     }
 })
 
-export const { addMessage, clearMessages, setReduxMessage} = messageSlice.actions;
+export const { addMessage, clearMessages, setReduxMessage, timeMessage, receiverId, senderId} = messageSlice.actions;
 export const messageReducer = messageSlice.reducer;

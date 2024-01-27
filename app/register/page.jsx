@@ -24,6 +24,10 @@ const Register = () => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [pword, setPword] = useState('')
+  const [image, setImage] = useState('')
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const router = useRouter();
 
@@ -31,8 +35,23 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = { firstname, lastname, username, phone, email, pword };
-    const res = await registerHandler(user).then(() => router.push("/login")).catch((error) => console.log(error));
+    const res = await registerHandler(user).then((e) => router.push("/login")).catch((error) => console.log(error));
+    // { if(e.success){
+    //     router.push("/login"))
+    // } else {
+    //     if(username === user.username){
+    //         alert("username ile daha önce kayıt olunmuş")
+    //         console.log("username aynı");
+    //     }else if(email === user.email){
+    //         alert("email ile daha önce kayıt olunmuş")
+    //     }else if(phone === user.phone){
+    //         alert("telefon numarası ile daha önce kayıt olunmuş")
+    //     }
+    // catch((error) => console.log(error));
+    // }
+    // }
     
+  
   };
   
     
@@ -61,7 +80,7 @@ const Register = () => {
             </h1>
             <h4 className='text-[#ABABAB] font-medium mt-4'>Kayıt Olun</h4>
 
-            <form action="" onSubmit={handleSubmit} className='w-full flex flex-col items-center space-y-6 mt-10 font-redHatDisplay'>
+            <form action="" encType='mulipart/form-data' onSubmit={handleSubmit} className='w-full flex flex-col items-center space-y-6 mt-10 font-redHatDisplay'>
                 <div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
                     <span className='text-[#3E0AD4] '><AccountCircleIcon/></span>
                     <input onChange={(e) => setFirstname(e.target.value)} type="text" placeholder="Adınızı giriniz" className='outline-none w-full' required/>
@@ -86,6 +105,10 @@ const Register = () => {
                     <span className='text-[#3E0AD4]'><KeyIcon/></span>
                     <input type="password" onChange={(e) => setPword(e.target.value)} placeholder="Şifrenizi giriniz" className='outline-none w-full' required/>
                 </div>
+                {/*<div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
+                    <span className='text-[#3E0AD4]'><KeyIcon/></span>
+                    <input type="file" onChange={(e) => setImage(e.target.value)} className='outline-none w-full' />
+                </div>*/}
                 {/* <div className='flex items-center border-b-2 border-gray-300 space-x-2 w-2/3 hover:border-gray-600 duration-500'>
                     <span className='text-d-blue'><KeyIcon/></span>
                     <input type="password" placeholder="Şifrenizi tekrar giriniz" className='outline-none w-full' required/>

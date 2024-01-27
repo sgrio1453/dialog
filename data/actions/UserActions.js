@@ -15,14 +15,19 @@ export async function getUserByTokenHandler({ token }) {
 }
 
 
+
 export async function getUserHandler() {
   const client = await db.connect();
-  // ${userid}
-  const { rows } = await client.sql`SELECT * FROM users where `;
 
+  const { rows } =
+  await client.sql`SELECT * FROM users`;
 
   return rows;
+
 }
+
+
+
 
 
 
@@ -46,8 +51,10 @@ export async function registerHandler({
     RETURNING *
   `;
 
-  return rows;
+      return rows;
+   
 }
+
 
 export async function loginHandler({ username, pword }) {
  
@@ -91,8 +98,8 @@ export async function messageHandler({ messageid, receiverid, senderid, message,
   const client = await db.connect();
 
   const { rows } = await client.sql`
-    INSERT INTO message (messageid, receiverid, senderid, message, createddate)
-    VALUES (${messageid}, ${receiverid}, ${senderid}, ${message}, ${createddate})
+    INSERT INTO message (receiverid, senderid, message, createddate)
+    VALUES (${receiverid}, ${senderid}, ${message}, ${createddate})
     RETURNING *
   `;
 
