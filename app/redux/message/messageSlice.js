@@ -8,15 +8,28 @@ const messageSlice = createSlice({
         time: '',
         messages: [],
         receiverId: '',
-        senderId: ''
+        senderId: '',
+        userMessages: {},
+        messageAll : []
     },
     reducers: {
         setReduxMessage(state, action) {
             state.message = action.payload
         },
-        addMessage: (state, action) => {
-            state.messages.push(action.payload)
+        messageAll: (state,action) =>{
+            state.messageAll = action.payload
         },
+        addMessage: (state, action) => {
+            const { user, message } = action.payload;
+      
+            // Eğer kullanıcı için bir mesaj dizisi yoksa oluştur
+            if (!state.userMessages[user]) {
+              state.userMessages[user] = [];
+            }
+      
+            // Mesajı kullanıcıya ait diziyi güncelleyerek ekle
+            state.userMessages[user].push(message);
+          },
         clearMessages: (state, action) => {
             state.messages = []
         },
@@ -32,5 +45,5 @@ const messageSlice = createSlice({
     }
 })
 
-export const { addMessage, clearMessages, setReduxMessage, timeMessage, receiverId, senderId} = messageSlice.actions;
+export const { addMessage, clearMessages,messageAll, setReduxMessage, timeMessage, receiverId, senderId} = messageSlice.actions;
 export const messageReducer = messageSlice.reducer;

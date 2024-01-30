@@ -9,7 +9,7 @@ const UserSenderInfo = () => {
         <div className="w-40 h-40 ">
                 <Image
                   className="rounded-full object-cover w-full h-full border border-[#3E0AD4]"
-                  src="/images/p1.jpg"
+                  src="/images/dialogSign/signInP.jpg"
                   alt="profilPhoto"
                   width={160}
                   height={160}

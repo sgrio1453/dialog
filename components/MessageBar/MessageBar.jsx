@@ -48,6 +48,7 @@ const MessageBar = ( {setSelectedChat }) => {
       lastname: selectedUser.lastname,
       email: selectedUser.email,
       phone: selectedUser.phone,
+      sender: usernameRedux,
     };
   dispatch(activeUserChat(userInfo));
   console.log(userInfo);
@@ -107,7 +108,7 @@ const MessageBar = ( {setSelectedChat }) => {
                   <div className="w-16 h-16 ">
                     <Image
                       className="rounded-full object-cover w-full h-full border border-[#3E0AD4]"
-                      src="/images/p2.jpg"
+                      src="/images/dialogSign/signUpP.jpg"
                       alt="profilPhoto"
                       width={60}
                       height={60}

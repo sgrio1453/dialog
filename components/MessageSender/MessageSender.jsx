@@ -18,7 +18,7 @@ const MessageSender = () => {
   <div className="w-16 h-16 ">
           <Image
             className="rounded-full object-cover w-full h-full border border-[#3E0AD4]"
-            src="/images/p1.jpg"
+            src="/images/dialogSign/signInP.jpg"
             alt="profilPhoto"
             width={60}
             height={60}

@@ -4,20 +4,30 @@ const chatSlice = createSlice({
     name: "chat",
     initialState: {
         chats: [],
-        user : {}
+        user : {},
+        messageUser: []
     },
     reducers: {
-        removeChat: (state, action) => {
-            state.chats = state.chats.filter(chat => chat.id !== action.payload)
-        },
         userChats: (state, action) => {
             state.chats = action.payload
         },
         activeUserChat : (state, action) => {
             state.user = action.payload
-        }
+        },
+        addMessageToUser:(state,action)=>{
+            state.messageUser = action.payload
+        },
+        addChat: (state, action) => {
+            state.chats.push(action.payload);
+        },
+        removeChat: (state, action) => {
+            const index = state.chats.findIndex((chat) => chat.id === action.payload);
+            if (index !== -1) {
+              state.chats.splice(index, 1);
+            }
+        },
     }
 })
 
-export const { userChats, removeChat, activeUserChat } = chatSlice.actions;
+export const { userChats, removeChat, activeUserChat, addMessageToUser } = chatSlice.actions;
 export const chatReducer = chatSlice.reducer;

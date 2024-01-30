@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { EmojiHappy, Send2 } from 'iconsax-react';
 import Picker from 'emoji-picker-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReduxMessage, receiverId } from '@/app/redux/message/messageSlice';
+import { setReduxMessage, receiverId, messageAll } from '@/app/redux/message/messageSlice';
 import { messageHandler } from '@/data/actions/UserActions';
 const MessageInput = ({ socket }) => {
   // const socket = io.connect('http://localhost:5000');
 
   const [message, setMessage] = useState('');
+  const [messagesAll, setMessagesAll] = useState([]);
   const [showEmoji, setShowEmoji] = useState(false);
   const username = useSelector((state) => state.user.username);
+  const activeUser = useSelector((state) => state.chat.user);
   const dispatch = useDispatch();
   // console.log("username kısmı",username);
   
-
+  
 
       socket.emit('set_username', { username });
 
@@ -23,13 +25,23 @@ const MessageInput = ({ socket }) => {
     if (message.trim() === '') {
       return; // Boş mesaj gönderme
     } 
-    await socket.emit('message', { message, username});
+    const messageUser = {
+      username : username,
+      receiver : activeUser.username,
+      message : message,
+    }
+    
+    // setMessagesAll((prev) => [...prev, messageUser]);
+    // dispatch(messageAll(messagesAll));
+    await socket.emit('message', messageUser);
     dispatch(setReduxMessage(message)); 
     
     setMessage('');
     setShowEmoji(false);
 
   };
+
+  
 
   const handleEmojiShow = () => {
     setShowEmoji(!showEmoji);
